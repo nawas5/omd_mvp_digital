@@ -49,13 +49,13 @@ def index():
 
         try:
             conn = engine.connect()
-            message = "Data uploaded successfully"
+            message = "Digital data connected successfully"
             message_type = "success"
             return render_template('index.html', message=message, message_type=message_type, start_date=start_date,
                                    end_date=end_date)
         except SQLAlchemyError:
             # if the connection fails, show an error message
-            message = "Failed to upload data"
+            message = "Failed to connected digital data"
             message_type = "error"
             return render_template('index.html', message=message, message_type=message_type, start_date=start_date,
                                    end_date=end_date)
