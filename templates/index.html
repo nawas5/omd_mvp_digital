@@ -10,15 +10,26 @@
 <body>
 <div class="container">
     <h1>Welcome to my Flask App</h1>
-    <div class="form-container">
+    <div class="language-container">
         <form method="POST" action="/">
-            <input type="submit" name="upload_data" value="Upload Data">
-            <input type="submit" name="upload_db" value="Upload Data to DB">
-            <input type="submit" name="replace_data" value="Replace Data in DB">
+            <input type="radio" name="language" value="en" {% if language == 'en' %}checked{% endif %} checked>
+            English<br>
+            <input type="radio" name="language" value="ru" {% if language == 'ru' %}checked{% endif %}> Russian<br>
         </form>
     </div>
     <div class="date-range-container">
-        <p>Data for the week of {{ start_date }} to {{ end_date }}</p>
+        <p>Data for the week of
+            <input type="date" name="start_date" value="{{ start_date }}" required>
+            to
+            <input type="date" name="end_date" value="{{ end_date }}" required>
+        </p>
+    </div>
+    <div class="form-container">
+        <form method="POST" action="/">
+            <input type="submit" name="submit_button" value="upload_data">
+            <input type="submit" name="submit_button" value="upload_db">
+            <input type="submit" name="submit_button" value="replace_data">
+        </form>
     </div>
 </div>
 <div id="popup-message" class="hidden">
@@ -42,5 +53,13 @@
         {% endif %}
     </div>
 </div>
+<script>
+    var languageRadios = document.getElementsByName('language');
+    for (var i = 0; i < languageRadios.length; i++) {
+        languageRadios[i].addEventListener('change', function () {
+            document.querySelector('form').submit();
+        });
+    }
+</script>
 </body>
 </html>
