@@ -23,6 +23,36 @@ h1 {
     text-align: center;
 }
 
+.form-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container form {
+    display: inline-block;
+}
+
+.form-container input[type="submit"] {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.date-range-container {
+    text-align: center;
+}
+
+/* Styles for the pop-up close button */
+
 #popup-message {
   position: fixed;
   bottom: 20px;
@@ -57,30 +87,46 @@ h1 {
   color: #f44336;
 }
 
-.form-container {
-    margin-bottom: 20px;
-    text-align: center;
+/* Styles for the pop-up close button */
+.popup-message-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
-.form-container form {
-    display: inline-block;
+#popup-message.success .popup-message-close:before,
+#popup-message.success .popup-message-close:after {
+  background-color: #8bc34a;
 }
 
-.form-container input[type="submit"] {
-    margin-right: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+#popup-message.error .popup-message-close:before,
+#popup-message.error .popup-message-close:after {
+  background-color: #f44336;
 }
 
-.form-container input[type="submit"]:hover {
-    background-color: #0069d9;
+.popup-message-close:before,
+.popup-message-close:after {
+  position: absolute;
+  content: ' ';
+  height: 8px;
+  width: 1px;
+  opacity: 0.7;
 }
 
-.date-range-container {
-    text-align: center;
+.popup-message-close:before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.popup-message-close:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

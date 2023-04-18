@@ -24,21 +24,20 @@
 <div id="popup-message" class="hidden">
     <div id="popup-message-content">
         {% if message %}
+            <span>{{ message }}</span>
+            <button class="popup-message-close" onclick="closePopup()"></button>
             <script>
                 var popupMessage = document.getElementById('popup-message');
                 var popupMessageContent = document.getElementById('popup-message-content');
-                popupMessageContent.innerHTML = "{{ message }}";
                 popupMessage.classList.remove('hidden');
                 {% if message_type == 'success' %}
                     popupMessage.classList.add('success');
                 {% elif message_type == 'error' %}
                     popupMessage.classList.add('error');
                 {% endif %}
-                setTimeout(function () {
+                function closePopup() {
                     popupMessage.classList.add('hidden');
-                    popupMessage.classList.remove('success');
-                    popupMessage.classList.remove('error');
-                }, 5000);
+                }
             </script>
         {% endif %}
     </div>
