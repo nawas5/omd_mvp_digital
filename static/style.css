@@ -22,7 +22,7 @@ input[type="date"] {
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -56,95 +56,96 @@ h1 {
 
 .date-range-container {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .language-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    flex-direction: row;
-}
+    margin-bottom: 10px;
 
+}
 
 
 /* Styles for the pop-up close button */
 
 #popup-message {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 200px;
-  height: auto;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  z-index: 9999;
-  text-align: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: auto;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 9999;
+    text-align: center;
 }
 
 #popup-message.hidden {
-  display: none;
+    display: none;
 }
 
+
 #popup-message.success {
-  border-color: #8bc34a;
+    border-color: #8bc34a;
 }
 
 #popup-message.success #popup-message-content {
-  color: #8bc34a;
+    color: #8bc34a;
 }
 
 #popup-message.error {
-  border-color: #f44336;
+    border-color: #f44336;
 }
 
 #popup-message.error #popup-message-content {
-  color: #f44336;
+    color: #f44336;
 }
 
 /* Styles for the pop-up close button */
 .popup-message-close {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 12px;
-  height: 12px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  opacity: 0.7;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 #popup-message.success .popup-message-close:before,
 #popup-message.success .popup-message-close:after {
-  background-color: #8bc34a;
+    background-color: #8bc34a;
 }
 
 #popup-message.error .popup-message-close:before,
 #popup-message.error .popup-message-close:after {
-  background-color: #f44336;
+    background-color: #f44336;
 }
 
 .popup-message-close:before,
 .popup-message-close:after {
-  position: absolute;
-  content: ' ';
-  height: 8px;
-  width: 1px;
-  opacity: 0.7;
+    position: absolute;
+    content: ' ';
+    height: 8px;
+    width: 1px;
+    opacity: 0.7;
 }
 
 .popup-message-close:before {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .popup-message-close:after {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 

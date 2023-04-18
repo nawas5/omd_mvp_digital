@@ -16,37 +16,33 @@ def get_date_range(start_date=None, end_date=None):
     return start_date, end_date
 
 
+def upload_data():
+    # implementation of upload_data function
+    pass
+
+
+def upload_db():
+    # implementation of upload_db function
+    pass
+
+
+def replace_data():
+    # implementation of replace_data function
+    pass
+
+
 # define the route and view function for the index page
 @app.route('/', methods=['GET', 'POST'])
 def index():
     start_date, end_date = get_date_range()
-    language = request.form.get('language', 'en')
 
     if request.method == 'POST':
-
-        if request.form['action'] == 'upload_data':
-            # code for uploading new data goes here
-            message = "Data uploaded successfully"
-            start_date = request.form['start_date']
-            end_date = request.form['end_date']
-            language = request.form['language']
-            return render_template('index.html', message=message, start_date=start_date, end_date=end_date)
-
-        elif request.form['action'] == 'upload_db':
-            # code for uploading new data to the DB goes here
-            message = "Data uploaded to DB successfully"
-            start_date = request.form['start_date']
-            end_date = request.form['end_date']
-            language = request.form['language']
-            return render_template('index.html', message=message, start_date=start_date, end_date=end_date)
-
-        elif request.form['action'] == 'replace_data':
-            # code for replacing data in the DB goes here
-            message = "Data replaced in DB successfully"
-            start_date = request.form['start_date']
-            end_date = request.form['end_date']
-            language = request.form['language']
-            return render_template('index.html', message=message, start_date=start_date, end_date=end_date)
+        start_date = request.form['start_date']
+        end_date = request.form['end_date']
+        language = request.form['language']
+        message = f"The database is selected in {language}"
+        return render_template('index.html', message=message, start_date=start_date, end_date=end_date,
+                               language=language)
 
     else:
         # create engine to connect to the database

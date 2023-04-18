@@ -8,58 +8,56 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
-    <h1>Welcome to my Flask App</h1>
-    <div class="language-container">
-        <form method="POST" action="/">
-            <input type="radio" name="language" value="en" {% if language == 'en' %}checked{% endif %} checked>
+<form method="POST" action="/">
+    <div class="container">
+        <h1>Welcome to my Flask App</h1>
+        <div class="language-container">
+            <input type="radio" name="language" value="eng" {% if language == 'eng' %}checked{% endif %} checked>
             English<br>
-            <input type="radio" name="language" value="ru" {% if language == 'ru' %}checked{% endif %}> Russian<br>
-        </form>
+            <input type="radio" name="language" value="rus" {% if language == 'rus' %}checked{% endif %}> Russian<br>
+        </div>
+        <div class="date-range-container">
+            <p>Data for the day of
+                <input type="date" name="start_date" value="{{ start_date }}" required>
+                to
+                <input type="date" name="end_date" value="{{ end_date }}" required>
+            </p>
+        </div>
+        <div class="form-container">
+                <input type="submit" name="submit_button" value="upload_data">
+                <input type="submit" name="submit_button" value="upload_db">
+                <input type="submit" name="submit_button" value="replace_data">
+        </div>
     </div>
-    <div class="date-range-container">
-        <p>Data for the week of
-            <input type="date" name="start_date" value="{{ start_date }}" required>
-            to
-            <input type="date" name="end_date" value="{{ end_date }}" required>
-        </p>
+    <div id="popup-message" class="hidden">
+        <div id="popup-message-content">
+            {% if message %}
+                <span>{{ message }}</span>
+                <button class="popup-message-close" onclick="closePopup()"></button>
+                <script>
+                    var popupMessage = document.getElementById('popup-message');
+                    var popupMessageContent = document.getElementById('popup-message-content');
+                    popupMessage.classList.remove('hidden');
+                    {% if message_type == 'success' %}
+                        popupMessage.classList.add('success');
+                    {% elif message_type == 'error' %}
+                        popupMessage.classList.add('error');
+                    {% endif %}
+                    function closePopup() {
+                        popupMessage.classList.add('hidden');
+                    }
+                </script>
+            {% endif %}
+        </div>
     </div>
-    <div class="form-container">
-        <form method="POST" action="/">
-            <input type="submit" name="submit_button" value="upload_data">
-            <input type="submit" name="submit_button" value="upload_db">
-            <input type="submit" name="submit_button" value="replace_data">
-        </form>
-    </div>
-</div>
-<div id="popup-message" class="hidden">
-    <div id="popup-message-content">
-        {% if message %}
-            <span>{{ message }}</span>
-            <button class="popup-message-close" onclick="closePopup()"></button>
-            <script>
-                var popupMessage = document.getElementById('popup-message');
-                var popupMessageContent = document.getElementById('popup-message-content');
-                popupMessage.classList.remove('hidden');
-                {% if message_type == 'success' %}
-                    popupMessage.classList.add('success');
-                {% elif message_type == 'error' %}
-                    popupMessage.classList.add('error');
-                {% endif %}
-                function closePopup() {
-                    popupMessage.classList.add('hidden');
-                }
-            </script>
-        {% endif %}
-    </div>
-</div>
-<script>
-    var languageRadios = document.getElementsByName('language');
-    for (var i = 0; i < languageRadios.length; i++) {
-        languageRadios[i].addEventListener('change', function () {
-            document.querySelector('form').submit();
-        });
-    }
-</script>
+    <script>
+        var languageRadios = document.getElementsByName('language');
+        for (var i = 0; i < languageRadios.length; i++) {
+            languageRadios[i].addEventListener('change', function () {
+                document.querySelector('form').submit();
+            });
+        }
+    </script>
+</form>
 </body>
 </html>
